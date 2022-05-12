@@ -1,0 +1,53 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap");
+
+.header {
+  overflow: hidden;
+  background-color: #006064;
+  padding: 20px 10px;
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+}
+
+#logo {
+  padding: 0;
+}
+
+.header .link {
+  float: left;
+  color: black;
+  text-align: center;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px;
+  line-height: 25px;
+  border-radius: 4px;
+}
+
+.header .link:hover {
+  background-color: #00838f;
+  color: black;
+}
+
+.header .link.active {
+  background-color: #00838f;
+  color: white;
+}
+
+.header-right {
+  float: right;
+}
+
+@media screen and (max-width: 500px) {
+  .header .link {
+    float: none;
+    display: block;
+    text-align: center;
+  }
+  .header-right {
+    float: none;
+  }
+}
+
+#cat-logo {
+  height: 20%;
+}
