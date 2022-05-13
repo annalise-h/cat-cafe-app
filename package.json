@@ -4,10 +4,9 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "server": "nodemon server/app.js --ignore client",
+    "dev": "nodemon server/app.js --ignore client",
     "heroku-postbuild": "cd client && npm install && npm run build",
-    "start": "concurrently --kill-others-on-fail \"npm run server\" \"npm run start --prefix client\"",
-    "prod": "node server/app.js"
+    "start": "node server/app.js"
   },
   "keywords": [],
   "author": "",
