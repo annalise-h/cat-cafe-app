@@ -24,6 +24,13 @@ mongoose.connection.on("error", (err) => {
 });
 
 app.use(express.static(path.join(__dirname, "public")));
+// import the client build folder to the server
+app.use(express.static(path.resolve(__dirname, "./client/build")));
+// ensures that the routes defined with React Router are working post-deploy.
+// handles any requests by redirecting them to index.html
+app.get("*", function (req, res) {
+  response.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
+});
 
 // Takes the raw requests and turns them into usable properties on req.body
 app.use(express.json());
