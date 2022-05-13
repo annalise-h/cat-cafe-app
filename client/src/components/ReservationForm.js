@@ -44,8 +44,20 @@ const ReservationForm = () => {
     setTime(newTime);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     setModalOpen(true);
+
+    const formData = new FormData(e.target);
+    try {
+      await fetch("/reservations", {
+        method: "POST",
+        body: formData,
+      });
+    } catch (e) {
+      console.log(e);
+    }
+
     navigate("/see-cats");
   };
 
@@ -63,12 +75,7 @@ const ReservationForm = () => {
 
   return (
     <Container id="reservation-form-container">
-      <form
-        id="reservation-form"
-        method="post"
-        action="/reservations"
-        onSubmit={handleSubmit}
-      >
+      <form id="reservation-form" onSubmit={handleSubmit}>
         <p id="reservation-info" className="form-item">
           You can request a reservation to visit the Cat Cafe. A reservation
           will be a one hour time slot to meet and potentially adopt any of the
@@ -104,7 +111,6 @@ const ReservationForm = () => {
         </FormControl>
         <FormControl className="form-item">
           <InputLabel htmlFor="reservationTime">Reservation Time</InputLabel>
-          {/* <Input id="reservation-time-input" name="reservationTime" /> */}
           <Select
             id="demo-simple-select"
             label="reservationTime"

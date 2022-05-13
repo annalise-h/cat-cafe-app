@@ -2,7 +2,6 @@ import React from "react";
 
 import ConfirmationModal from "./ConfirmationModal";
 
-import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
@@ -20,7 +19,7 @@ class CatsList extends React.Component {
 
   componentDidMount = async () => {
     try {
-      const res = await fetch("/cats");
+      const res = await fetch("cats");
       const allCats = await res.json();
       this.setState({
         catsList: allCats,

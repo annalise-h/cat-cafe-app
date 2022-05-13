@@ -1,6 +1,7 @@
 const dotenv = require("dotenv");
 const cors = require("cors");
 const express = require("express");
+const formData = require("express-form-data");
 const mongoose = require("mongoose");
 const passport = require("passport");
 const path = require("path");
@@ -25,16 +26,12 @@ mongoose.connection.on("error", (err) => {
 
 app.use(express.static(path.join(__dirname, "public")));
 // import the client build folder to the server
-app.use(express.static(path.resolve(__dirname, "./client/build")));
-// ensures that the routes defined with React Router are working post-deploy.
-// handles any requests by redirecting them to index.html
-app.get("*", function (req, res) {
-  response.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
-});
+app.use(express.static(path.resolve(__dirname, "client/build")));
 
 // Takes the raw requests and turns them into usable properties on req.body
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(formData.parse());
 
 app.use(cors());
 
@@ -92,6 +89,12 @@ app.use(adminJs.options.rootPath, router);
 
 const routes = require("./routes/routes");
 app.use("/", routes);
+
+// ensures that the routes defined with React Router are working post-deploy.
+// handles any requests by redirecting them to index.html
+app.get("*", function (req, res) {
+  res.sendFile(path.resolve(__dirname, "client/build", "index.html"));
+});
 
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
