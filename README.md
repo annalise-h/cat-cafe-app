@@ -1,8 +1,8 @@
 # Cat Cafe App
 
 This is a project in two parts:
-1. A client side website for a cat cafe business, accessible at <ADD URL HERE>
-2. An admin dashboard to allow the business owner to manage their cafe, accessible at <ADD URL HERE> 
+1. A client side website for a cat cafe business, accessible at https://cat-cafe-app.herokuapp.com/
+2. An admin dashboard to allow the business owner to manage their cafe, accessible at https://cat-cafe-app.herokuapp.com/admin/dashboard
   
 # Client Side website 
 
